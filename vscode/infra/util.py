@@ -1,12 +1,12 @@
 from datetime import datetime, timedelta
 import requests
 
-def cal_std_day(befor_day):   
-    x = datetime.now() - timedelta(befor_day)
+def cal_std_day(before_day):   
+    x = datetime.now() - timedelta(before_day)
     year = x.year
     month = x.month if x.month >= 10 else '0'+ str(x.month)
     day = x.day if x.day >= 10 else '0'+ str(x.day)  
-    return str(year)+ '-' +str(month)+ '-' +str(day)
+    return str(year)+str(month)+ str(day)
 
 
 def execute_rest_api(method, url, headers, params):    
