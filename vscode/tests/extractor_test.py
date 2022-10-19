@@ -1,13 +1,11 @@
 import unittest
-from datajob.etl.extract.corona_api import CoronaApiExtractor
-from datajob.etl.extract.corona_vaccine import CoronaVaccineExtractor
+from vscode.datajob.etl.extract.subway import SubwayExtractor
+
+
 class MTest(unittest.TestCase):
 
     def test1(self):
-        CoronaApiExtractor.extract_data()
-
-    def test2(self):
-        CoronaVaccineExtractor.extract_data()
+        SubwayExtractor.extract_data()
 
 
 
