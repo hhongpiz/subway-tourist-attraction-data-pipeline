@@ -5,14 +5,14 @@ class DataWarehouse(Enum):
     URL ='jdbc:oracle:thin:@decorona_high?TNS_ADMIN=/home/big/study/db/Wallet_DECORONA'
     PROPS={
         'user':'dw_de'
-       ,'password':'123qwe!@#QWE'
+       ,'password':'123QWE!@#qwe'
     }
 
 class DataMart(Enum):
     URL ='jdbc:oracle:thin:@decorona_high?TNS_ADMIN=/home/big/study/db/Wallet_DECORONA'
     PROPS={
         'user':'dm_de'
-       ,'password':'123qwe!@#QWE'
+       ,'password':'123QWE!@#qwe'
     }
 
 def save_data(config, dataframe, table_name):
