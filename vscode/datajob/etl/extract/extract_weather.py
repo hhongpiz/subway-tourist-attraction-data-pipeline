@@ -55,16 +55,3 @@ class WeatherByTimeDate:
         
         return log_dict
 
-class weather:
-    @classmethod
-    def sample(cls):
-        path = '/final_data/weather/weather_20220417.json'
-        tmp = get_spark_session().read.json(path, encoding='utf-8')
-        tmp2 = tmp.select('result').first()
-        tmp2.show()
-        # df = get_spark_session().createDataFrame(tmp2)
-        # tmp3 = df.select('items').first()
-        # tmp4 = get_spark_session().createDataFrame(tmp3).first()
-        # df2 = get_spark_session().createDataFrame(tmp4['item'])
-        # df2.show()
-
