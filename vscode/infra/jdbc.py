@@ -2,16 +2,16 @@ from enum import Enum
 from infra.spark_session import get_spark_session
 
 class DataWarehouse(Enum):
-    URL ='jdbc:oracle:thin:@decorona_high?TNS_ADMIN=/home/big/study/db/Wallet_DECORONA'
+    URL ='jdbc:oracle:thin:@finalproject_high?TNS_ADMIN=/home/big/study/db/Wallet_FINALPROJECT'
     PROPS={
-        'user':'dw_de'
+        'user':'admin'
        ,'password':'123QWE!@#qwe'
     }
 
 class DataMart(Enum):
-    URL ='jdbc:oracle:thin:@decorona_high?TNS_ADMIN=/home/big/study/db/Wallet_DECORONA'
+    URL ='jdbc:oracle:thin:@finalproject_high?TNS_ADMIN=/home/big/study/db/Wallet_FINALPROJECT'
     PROPS={
-        'user':'dm_de'
+        'user':'admin'
        ,'password':'123QWE!@#qwe'
     }
 

@@ -2,6 +2,7 @@ import json
 from infra.logger import get_logger
 from infra.util import cal_std_day, execute_rest_api
 from infra.hdfs_client import get_client
+from infra.spark_session import get_spark_session
 
 class WeatherByTimeDate:
     URL = 'http://apis.data.go.kr/1360000/AsosHourlyInfoService/getWthrDataList'
@@ -10,7 +11,7 @@ class WeatherByTimeDate:
 
     @classmethod
     def extract_data(cls):
-        for i in range(101,200):
+        for i in range(290,660): # 294, 660 (2021)
             params = {'ServiceKey':cls.SERVICE_KEY
                 ,'numOfRows':'30'
                 ,'dataType':'JSON'
@@ -53,3 +54,17 @@ class WeatherByTimeDate:
             }
         
         return log_dict
+
+class weather:
+    @classmethod
+    def sample(cls):
+        path = '/final_data/weather/weather_20220417.json'
+        tmp = get_spark_session().read.json(path, encoding='utf-8')
+        tmp2 = tmp.select('result').first()
+        tmp2.show()
+        # df = get_spark_session().createDataFrame(tmp2)
+        # tmp3 = df.select('items').first()
+        # tmp4 = get_spark_session().createDataFrame(tmp3).first()
+        # df2 = get_spark_session().createDataFrame(tmp4['item'])
+        # df2.show()
+

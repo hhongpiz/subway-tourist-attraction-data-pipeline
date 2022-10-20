@@ -1,11 +1,12 @@
 import unittest
-from datajob.etl.extract.extract_weather import WeatherByTimeDate
+from datajob.etl.extract.extract_weather import WeatherByTimeDate, weather
 
 
 class MTest(unittest.TestCase):
 
     def test1(self):
         WeatherByTimeDate.extract_data()
+
 
 
 if __name__ == "__main__":
