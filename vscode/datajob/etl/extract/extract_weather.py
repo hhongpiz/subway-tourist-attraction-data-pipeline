@@ -11,7 +11,7 @@ class WeatherByTimeDate:
 
     @classmethod
     def extract_data(cls):
-        for i in range(290,660): # 294, 660 (2021)
+        for i in range(635,636): # 1025일째
             params = {'ServiceKey':cls.SERVICE_KEY
                 ,'numOfRows':'30'
                 ,'dataType':'JSON'
