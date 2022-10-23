@@ -79,16 +79,16 @@ class FloatPopTransform:
         dump_df.show()
 
 
-        # @classmethod
-        # def load_weather():
-        #     weather_df = find_data(DataWarehouse, 'WEATHER')
-        #     weather_idx_df = weather_df.select('W_IDX')
-        #     weather_idx_df.show()
+    @classmethod
+    def load_weather(cls):
+        weather_df = find_data(DataWarehouse, 'WEATHER')
+        weather_idx_df = weather_df.select('W_IDX', 'DAY', 'TIME')
+        weather_idx_df.show()
 
-        #     subway_pop = dump_df.join(weather_df, on='')
-        #     subway_pop.show()
+        # subway_pop = dump_df.join(weather_df, on='')
+        # subway_pop.show()
 
-            # save_data(DataWarehouse, subway_pop, 'FLOAT_POP')
+        # save_data(DataWarehouse, subway_pop, 'FLOAT_POP')
 
 
     # def cal_std_year(before_year):
