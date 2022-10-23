@@ -1,10 +1,4 @@
 import sys
-from datajob.datamart.co_popu_density import CoPopuDensity
-from datajob.datamart.co_vaccine import CoVaccine
-from datajob.etl.extract.corona_api import CoronaApiExtractor
-from datajob.etl.extract.corona_vaccine import CoronaVaccineExtractor
-from datajob.etl.transform.corona_patient import CoronaPatientTransformer
-from datajob.etl.transform.corona_vaccine import CoronaVaccineTransformer
 
 def transfrom_execute():
     CoronaPatientTransformer.transform()

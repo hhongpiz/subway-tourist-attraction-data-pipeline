@@ -1,0 +1,2 @@
+{"is_success": "Fail", "type": "weather", "err_msg": "Path does not exist: hdfs://localhost:9000/final_data/weather/weather_20210125.json"}
+{"is_success": "Fail", "type": "weather", "err_msg": "Path does not exist: hdfs://localhost:9000/final_data/weather/weather_20191231.json"}

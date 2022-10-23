@@ -2,7 +2,6 @@ import json
 from infra.logger import get_logger
 from infra.util import cal_std_day, execute_rest_api
 from infra.hdfs_client import get_client
-from infra.jdbc import DataWarehouse, find_data
 from infra.spark_session import get_spark_session
 
 class WeatherByTimeDate:
@@ -12,7 +11,7 @@ class WeatherByTimeDate:
 
     @classmethod
     def extract_data(cls):
-        for i in range(294,659):  #(294,659):10/21 기준
+        for i in range(635,636): # 1025일째
             params = {'ServiceKey':cls.SERVICE_KEY
                 ,'numOfRows':'30'
                 ,'dataType':'JSON'
@@ -56,11 +55,3 @@ class WeatherByTimeDate:
         
         return log_dict
 
-
-
-# class findData:
-#     @classmethod
-#     def find(cls):
-#         path = '/final_data/weather/weather_20221018.json'
-#         wheather_json = get_spark_session().read.json(path, encoding='utf-8')
-#         wheather_json
