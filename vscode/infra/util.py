@@ -19,3 +19,10 @@ def execute_rest_api(method, url, headers, params):
         raise Exception('응답코드 : ' + str(res.status_code))
 
     return res.text
+
+
+def cal_std_year(y):
+    x = datetime.now()
+    year = x.year
+    befo_year = year - y
+    return str(befo_year)
