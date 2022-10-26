@@ -9,7 +9,7 @@ class FloatPopTransform:
 
     @classmethod
     def transform(cls):
-        for i in range(1,4):
+        for i in range(1,2):
             path = '/final_data/subway/subway_' + cal_std_year(i) + '.csv'
             sub_df = get_spark_session().read.csv(path, encoding='UTF-8', header=True)
             sub_df.show()
@@ -84,8 +84,8 @@ class FloatPopTransform:
             weather_idx_df.show()
 
             subway_pop = weather_idx_df.join(dump_df, on=['DAY', 'TIME'])
-            subway_pop = subway_pop.drop('DAY', 'TIME')
-            # subway_pop.show()
+            # subway_pop = subway_pop.drop('DAY', 'TIME')
+            subway_pop.show()
 
             # 지하철 데이터의 S_IDX와 join을 위해 SUNWAY 테이블 가져옴(하남시청역, 남위례역 제거)
             subway_df = find_data(DataWarehouse, 'SUBWAY')
@@ -95,7 +95,11 @@ class FloatPopTransform:
             float_pop = subway_df.join(subway_pop, on='STATION_NAME') \
                                     .drop('STATION_NAME', 'LON', 'LAT', 'ADDRESS')
             float_pop.show()
+            float_pop = float_pop.groupby(col('S_IDX'), col('W_IDX')) \
+                                    .agg(sum(col('UP_POP')).alias('UP_POP')
+                                        , sum(col('DOWN_POP')).alias('DOWN_POP'))
+            float_pop.show()
             # float_pop.printSchema()
 
             # 최종 완성 데이터 FLOAT_POP 테이블에 저장
-            save_data(DataWarehouse, float_pop, 'FLOAT_POP')
+            # save_data(DataWarehouse, float_pop, 'FLOAT_POP')
