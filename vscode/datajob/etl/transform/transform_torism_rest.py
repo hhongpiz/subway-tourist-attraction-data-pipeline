@@ -2,7 +2,7 @@ from infra.jdbc import DataWarehouse, find_data, save_data
 from infra.spark_session import get_spark_session
 from pyspark.sql.functions import *
 
-class TourismRestTransformt:
+class TourismRestTransform:
 
     @classmethod
     def transform(cls):

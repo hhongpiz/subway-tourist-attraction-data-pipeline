@@ -1,6 +1,7 @@
 from enum import Enum
 from infra.spark_session import get_spark_session
 
+
 class DataWarehouse(Enum):
     URL ='jdbc:oracle:thin:@finalproject_high?TNS_ADMIN=/home/big/study/db/Wallet_FINALPROJECT'
     PROPS={
@@ -11,7 +12,7 @@ class DataWarehouse(Enum):
 class DataMart(Enum):
     URL ='jdbc:oracle:thin:@finalproject_high?TNS_ADMIN=/home/big/study/db/Wallet_FINALPROJECT'
     PROPS={
-        'user':'admin'
+        'user':'final_dm'
        ,'password':'123QWE!@#qwe'
     }
 

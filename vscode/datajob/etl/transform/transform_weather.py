@@ -9,7 +9,7 @@ from infra.logger import get_logger
 class WeatherTransform:
     @classmethod
     def transform(cls):
-        list = ['20190929'] #,'20191212','20191215','20200609','20200615','20200616','20200617','20200618','20200619','20200628','20200714','20200715','20200720','20200725','20200727','20200731','20200807','20200816','20200821','20200823','20200824','20200826','20210107']
+        list = ['20210107']
         for i in list: # 298, 1394
             try:
                 file_name = '/final_data/weather/weather_'+ i +'.json'
@@ -43,11 +43,11 @@ class WeatherTransform:
                                                     ,case when dc10Tca <= 5 then 1
                                                             when dc10Tca <= 8 then 3 else 4 end as SKY
                                                     ,ta as ONDO
-                                                    ,case when wd is null then 0 else floor((wd + 22.5 * 0.5) / 22.5) end as WINDD
-                                                    ,nvl(ws,0) as WINDS from weather""") 
+                                                    ,case when wd is null then 12 else floor((wd + 22.5 * 0.5) / 22.5) end as WINDD
+                                                    ,case when ws is null then 4.9 else ws*10/10 end as WINDS from weather""") 
                 weather.show()
 
-                # save_data(DataWarehouse, weather, 'WEATHER')
+                save_data(DataWarehouse, weather, 'WEATHER')
 
             except Exception as e:
                 log_dict = cls.__create_log_dict()

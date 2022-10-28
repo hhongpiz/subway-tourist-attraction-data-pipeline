@@ -1,6 +1,7 @@
 import unittest
 from datajob.etl.transform.transform_weather import WeatherTransform
-from datajob.etl.transform.transform_torism_rest import TourismRestTransformt
+from datajob.etl.transform.transform_torism_rest import TourismRestTransform
+from datajob.etl.transform.transform_weather_now import WeatherNowTransform
 
 
 class MTest(unittest.TestCase):
@@ -9,7 +10,11 @@ class MTest(unittest.TestCase):
         WeatherTransform.transform()
     
     def test2(self):
-        TourismRestTransformt.transform()
+        TourismRestTransform.transform()
+
+    def test3(self):
+        WeatherNowTransform.transform()
+
 
 
 if __name__ == "__main__":

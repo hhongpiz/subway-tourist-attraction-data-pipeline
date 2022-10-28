@@ -1,0 +1,1 @@
+{"is_success": "Fail", "type": "weather_new", "err_msg": "__init__() got an unexpected keyword argument 'value'"}
