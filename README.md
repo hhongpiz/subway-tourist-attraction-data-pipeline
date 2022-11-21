@@ -35,21 +35,21 @@
 ----------------------------
 
 ### [데이터 파이프라인]
-- WorkFlow
+> WorkFlow
 
 ![image](https://user-images.githubusercontent.com/108858076/202995759-cd09db3e-7622-4f62-8cef-dd59e84927f6.png)
 
-- [DATA WAREHOUSE](https://www.erdcloud.com/d/EQoAZtnumsy6ujTr6)
+> [DATA WAREHOUSE](https://www.erdcloud.com/d/EQoAZtnumsy6ujTr6)
 <img width="660" alt="image" src="https://user-images.githubusercontent.com/108858076/202994700-d3df0a17-b4bc-4a17-81a2-5e42bd29cca8.png">
 
-- [DATA MART](https://www.erdcloud.com/d/wykFB2PqM3ZGjiANF)
+> [DATA MART](https://www.erdcloud.com/d/wykFB2PqM3ZGjiANF)
 <img width="660" alt="image" src="https://user-images.githubusercontent.com/108858076/202994722-80795d84-9524-4c8c-abf8-9c056d9e1fbf.png">
 
-- airflow 배치작업
+> airflow 배치작업
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/108858076/202995381-7b348174-5810-4dec-821e-dbf8b36b561e.png">
 <img width="660" alt="image" src="https://user-images.githubusercontent.com/108858076/202995332-a023a415-2f33-458f-b4c1-174a2de8dac6.png">
 
-- 최종 데이터셋
+> 최종 데이터셋
 <img width="529" alt="image" src="https://user-images.githubusercontent.com/108858076/203011337-e2a682a1-2718-4f77-8e58-bacd5ff71ecc.png">
 
 
@@ -71,15 +71,16 @@
 -------------------------
 
 ### [모델링]
-#### 가공필드 생성
+> 가공필드 생성
+
 ![image](https://user-images.githubusercontent.com/108858076/203010620-630e06bb-b6a9-4ffe-98a7-cf192b1f6119.png)
 - 시간대별 지하철이용객 합계 중 17-19시의 이용객수 多 퇴근시간대가 아닌 시간과 퇴근시간대(17-19시)로 컬럼 생성
 - 역의 특성을 반영하기 위해 역별 합계 평균을 로그변환하여 컬럼 생성
-#### 사용데이터
+> 사용데이터
 - 2019년부터 2021년까지의 종관기상관측(ASOS)자료 일자별 10시~ 22시의 기상 데이터 유동인구 예측을 위한 단기예보 수집데이터에 맞춰 7개의 변수 활용(풍향,풍속,하늘상태,습도,강수량,적설량,온도)
 - 2019년부터 2021년까지의 서울교통공사 일자별 10시~ 22시의 1~8호선 223개역의 승하차 데이터 (2019년 기준)
 - 2019년부터 2021년까지의 서울특별시 대기환경 정보 일자별 10시~22시의 서울시 25개 자치구의 대기환경 데이터
-#### EDA 및 결측치 처리
+> EDA 및 결측치 처리
 - 유동인구가 가장 많은 잠실역의 날씨와 타겟값 간의 상관관계 분석표
   - 잠실역의 경우 습도 미세먼지가 타겟간의 약간의 상관성을 보이지만 나머지 지표에서는 상관도가 거의 없음
 <img width="278" alt="image" src="https://user-images.githubusercontent.com/108858076/203011804-9d6928e6-7dc4-4120-835b-7e4e2f44aca9.png">
@@ -87,7 +88,7 @@
 - 유동인구가 가장 적은 남태령역의 날씨와 타겟값 간의 상관관계 분석표
 <img width="282" alt="image" src="https://user-images.githubusercontent.com/108858076/203011824-186bf791-b781-48f6-a3fd-31ac3fcc7e7e.png">
 
-- 왜도를 줄이기 위해 로그변환을 실시함
+- 왜도를 줄이기 위해 로그변환을 실시
   - standard scaler, min_max scaler, robust scaler, log scale 중 log scale이 가장 큰 성능 향상을 보였음
 <img width="359" alt="image" src="https://user-images.githubusercontent.com/108858076/203012069-52cdfb60-8f28-4c71-b401-94f61a60d1ed.png">
 
@@ -126,9 +127,11 @@
 - 앱 내 사용 언어를 다양화 하여 내국인 뿐만 아니라 외국인에게도 제공
 -------------------------
 ### [느낀점]
+> data engineer
 - 홍효정:이번 프로젝트는 특히 비전공자만으로 구성되어있어 적절한 주제를 선정하는 것부터 ETL, 모델링, 웹서비스를 구현하는 것까고민도 많았고 난관도 많았습니다. 모두 처음 사용하는 기술도 많았지만 팀원들끼리 서로 배워가며 협업한 결과 프로젝트를 성공적으로 완성할 수 있었다고 생각합니다. 전공수업동안 배웠던 것을 녹여내려고 많이 노력했고 결과적으로 이번 프로젝트를 통해 많은 것을 얻어갈 수 있었습니다.   
 - 유승종:2차 프로젝트에서 했던 데이터 엔지니어링 과정을 한 번 더 진행하면서 이해도를 높일 수 있었으며, 서비스를 만드는 전반적인 흐름을 파악할 수 있었습니다.  또한 두 전공이 합심하여 프로젝트를 하면서 협업을 하는 법을 많이 배우게 됐습니다. 처음부터 끝까지 난관이 많았지만 좋은 팀원들을 만나 끝까지 잘 마무리 할 수 있었습니다.
 - 김민석:이것만하면 끝난다는 생각때문인지 1,2차때보다는 말을 좀 더 했던 것 같습니다. 처음 멘토링때 저희 걱정해주시던 멘토님들이 점점 저희 잘해냈다고 해주시고 강사님들도 말씀해주시니 거기에 힘이나 다들 더 열심히 했던게 아닐까하는 생각이 들었고 열심히 해서 좋은 결과가 나왔던 것 같아 좋은 경험이라고 생각합니다.
+> data scientist
 - 이중훈:처음에 주제를 정하고 서비스 구현까지 할 수 있을까 걱정이 많았는데, 프로젝트 초반부터 끝날 때까지 각각DS,DE 팀원끼리 정말 문제없이 소통을 많이해서 잘 마무리한 것 같습니다. 좋은 아이디어를 많이 내주시고, 맡은 역할에 정말 최선을 다 해주셔서 팀원분들에게 정말 감사드리고 힘들었지만 좋은 경험이었다고 생각합니다.
 - 박준수:분대장 이후로 팀장을 처음 해봤는데 프로젝트를 이끈다는 것이 여간 어려운일이 아니었다. 그렇지만 팀원 분들이 잘 따라주셔서 원활한 프로젝트가 된 것같고 배운 것 이상으로 많은 것들을 경험할 수 있어서 좋았습니다
 - 김태현:교육과정 중 DS 와 DE 의  처음이자 마지막인 공동 프로젝트를 진행하면서 많은 이슈가 있었지만 팀원들간의 커뮤니케이션으로 잘 해결 할수있었고 성공적인 프로젝트라고 생각하며 좋은 경험이되었던거 같습니다.
