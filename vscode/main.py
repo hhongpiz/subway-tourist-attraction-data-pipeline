@@ -1,39 +1,39 @@
 import sys
 
+from datajob.etl.extract.extract_weather_now import WeatherNow
+from datajob.etl.transform.transform_weather_now import WeatherNowTransform
+
+
 def transfrom_execute():
-    CoronaPatientTransformer.transform()
-    CoronaVaccineTransformer.transform()
+    WeatherNowTransform.transform()
 
-def datamart_execute():
-    CoPopuDensity.save()
-    CoVaccine.save()
 
-works = {
-    'extract':{
-        'corona_api': CoronaApiExtractor.extract_data
-        ,'corona_vaccine':CoronaVaccineExtractor.extract_data
+def main():
+    works = {
+        'extract':{
+            'extract_weather_now': WeatherNow.extract_data
+        }
+        ,'transform':{
+            'execute':transfrom_execute
+            ,'transform_weather_now':WeatherNowTransform.transform
+        }
     }
-    ,'transform':{
-        'execute':transfrom_execute
-        ,'corona_patient':CoronaPatientTransformer.transform
-        ,'corona_vaccine':CoronaVaccineTransformer.transform
-    }
-    ,'datamart':{
-        'execute':datamart_execute
-        ,'co_popu_density':CoPopuDensity.save
-        ,'co_vaccine':CoVaccine.save
-    }
-}
+    return works
+    
+works = main()
 
 if __name__ == "__main__":
+    # python3 main.py arg1 arg2
+    # 값을 받을 인자는 2개임
+    # 인자1 : 작업(extract, transform, datamart)
+    # 인자2 : 저장할 위치(테이블)
+    # ex) python3 main.py extract corona_api
+
     args = sys.argv
-    print(args)
-
-    # main.py 작업(extract, transform, datamart) 저장할 위치(테이블)
-    # 매개변수 2개
+    
     if len(args) != 3:
-        raise Exception('2개의 전달인자가 필요합니다.')
-
+        raise Exception('2개의 전달인자가 필요합니다')
+    
     if args[1] not in works.keys():
         raise Exception('첫번째 전달인자가 이상함 >> ' + str(works.keys()))
 
@@ -41,6 +41,4 @@ if __name__ == "__main__":
         raise Exception('두번째 전달인자가 이상함 >> ' + str(works[args[1]].keys()))
 
     work = works[args[1]][args[2]]
-    work()
-
-  
+    work()  # 함수객체를 이용해 함수 호출

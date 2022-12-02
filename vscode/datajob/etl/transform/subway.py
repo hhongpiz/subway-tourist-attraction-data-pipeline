@@ -1,6 +1,6 @@
 from infra.spark_session import get_spark_session
-from infra.jdbc import DataWarehouse, find_data, save_data
-from pyspark.sql.functions import col, regexp_replace, length
+from infra.jdbc import DataWarehouse, save_data
+from pyspark.sql.functions import col, regexp_replace
 
 class SubwayAdd:
 

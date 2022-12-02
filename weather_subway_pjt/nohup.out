@@ -1,0 +1,235 @@
+[2022-11-17 13:34:41 +0900] [25517] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 13:34:41 +0900] [25517] [ERROR] Connection in use: ('', 8000)
+[2022-11-17 13:34:41 +0900] [25517] [ERROR] Retrying in 1 second.
+[2022-11-17 13:34:42 +0900] [25517] [ERROR] Connection in use: ('', 8000)
+[2022-11-17 13:34:42 +0900] [25517] [ERROR] Retrying in 1 second.
+[2022-11-17 13:34:43 +0900] [25517] [ERROR] Connection in use: ('', 8000)
+[2022-11-17 13:34:43 +0900] [25517] [ERROR] Retrying in 1 second.
+[2022-11-17 13:34:44 +0900] [25517] [ERROR] Connection in use: ('', 8000)
+[2022-11-17 13:34:44 +0900] [25517] [ERROR] Retrying in 1 second.
+[2022-11-17 13:34:45 +0900] [25517] [ERROR] Connection in use: ('', 8000)
+[2022-11-17 13:34:45 +0900] [25517] [ERROR] Retrying in 1 second.
+[2022-11-17 13:34:46 +0900] [25517] [ERROR] Can't connect to ('', 8000)
+[2022-11-17 14:18:32 +0900] [18783] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 14:18:32 +0900] [18783] [INFO] Listening at: http://0.0.0.0:8000 (18783)
+[2022-11-17 14:18:32 +0900] [18783] [INFO] Using worker: sync
+[2022-11-17 14:18:32 +0900] [18789] [INFO] Booting worker with pid: 18789
+[2022-11-17 14:18:32 +0900] [18789] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'app'
+[2022-11-17 14:18:32 +0900] [18789] [INFO] Worker exiting (pid: 18789)
+[2022-11-17 14:18:32 +0900] [18783] [INFO] Shutting down: Master
+[2022-11-17 14:18:32 +0900] [18783] [INFO] Reason: Worker failed to boot.
+[2022-11-17 14:20:31 +0900] [19954] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 14:20:31 +0900] [19954] [INFO] Listening at: http://0.0.0.0:8000 (19954)
+[2022-11-17 14:20:31 +0900] [19954] [INFO] Using worker: sync
+[2022-11-17 14:20:31 +0900] [19956] [INFO] Booting worker with pid: 19956
+[2022-11-17 14:20:31 +0900] [19956] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'app'
+[2022-11-17 14:20:31 +0900] [19956] [INFO] Worker exiting (pid: 19956)
+[2022-11-17 14:20:31 +0900] [19954] [INFO] Shutting down: Master
+[2022-11-17 14:20:31 +0900] [19954] [INFO] Reason: Worker failed to boot.
+[2022-11-17 14:21:00 +0900] [20274] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 14:21:00 +0900] [20274] [INFO] Listening at: http://0.0.0.0:8000 (20274)
+[2022-11-17 14:21:00 +0900] [20274] [INFO] Using worker: sync
+[2022-11-17 14:21:00 +0900] [20279] [INFO] Booting worker with pid: 20279
+[2022-11-17 14:21:00 +0900] [20279] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'app'
+[2022-11-17 14:21:00 +0900] [20279] [INFO] Worker exiting (pid: 20279)
+[2022-11-17 14:21:01 +0900] [20274] [INFO] Shutting down: Master
+[2022-11-17 14:21:01 +0900] [20274] [INFO] Reason: Worker failed to boot.
+[2022-11-17 14:23:36 +0900] [21766] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 14:23:36 +0900] [21766] [INFO] Listening at: http://0.0.0.0:8000 (21766)
+[2022-11-17 14:23:36 +0900] [21766] [INFO] Using worker: sync
+[2022-11-17 14:23:36 +0900] [21775] [INFO] Booting worker with pid: 21775
+[2022-11-17 14:23:36 +0900] [21775] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'app'
+[2022-11-17 14:23:36 +0900] [21775] [INFO] Worker exiting (pid: 21775)
+[2022-11-17 14:23:36 +0900] [21766] [INFO] Shutting down: Master
+[2022-11-17 14:23:36 +0900] [21766] [INFO] Reason: Worker failed to boot.
+[2022-11-17 14:23:48 +0900] [21910] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 14:23:48 +0900] [21910] [INFO] Listening at: http://0.0.0.0:8000 (21910)
+[2022-11-17 14:23:48 +0900] [21910] [INFO] Using worker: sync
+[2022-11-17 14:23:48 +0900] [21912] [INFO] Booting worker with pid: 21912
+[2022-11-17 14:23:48 +0900] [21912] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/big/.local/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'app'
+[2022-11-17 14:23:48 +0900] [21912] [INFO] Worker exiting (pid: 21912)
+[2022-11-17 14:23:48 +0900] [21910] [INFO] Shutting down: Master
+[2022-11-17 14:23:48 +0900] [21910] [INFO] Reason: Worker failed to boot.
+[2022-11-17 14:53:57 +0900] [6796] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 14:53:57 +0900] [6796] [INFO] Listening at: http://0.0.0.0:8000 (6796)
+[2022-11-17 14:53:57 +0900] [6796] [INFO] Using worker: sync
+[2022-11-17 14:53:57 +0900] [6798] [INFO] Booting worker with pid: 6798
+Not Found: /static/img/기술스택.png
+Not Found: /static/img/기술스택.png
+[2022-11-17 14:58:19 +0900] [6796] [CRITICAL] WORKER TIMEOUT (pid:6798)
+[2022-11-17 14:58:19 +0900] [6798] [INFO] Worker exiting (pid: 6798)
+[2022-11-17 14:58:20 +0900] [9689] [INFO] Booting worker with pid: 9689
+Not Found: /favicon.ico
+[2022-11-17 15:04:24 +0900] [6796] [INFO] Handling signal: hup
+[2022-11-17 15:04:24 +0900] [6796] [INFO] Hang up: Master
+[2022-11-17 15:04:24 +0900] [6796] [WARNING] Worker with pid 9689 was terminated due to signal 1
+[2022-11-17 15:04:24 +0900] [14099] [INFO] Booting worker with pid: 14099
+[2022-11-17 15:27:25 +0900] [14099] [INFO] Parent changed, shutting down: <Worker 14099>
+[2022-11-17 15:27:25 +0900] [14099] [INFO] Worker exiting (pid: 14099)
+[2022-11-17 15:27:58 +0900] [28366] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 15:27:58 +0900] [28366] [INFO] Listening at: http://0.0.0.0:8000 (28366)
+[2022-11-17 15:27:58 +0900] [28366] [INFO] Using worker: sync
+[2022-11-17 15:27:58 +0900] [28371] [INFO] Booting worker with pid: 28371
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/', 'parameter': {}, 'timestamp': 1668666502, 'session_id': '2p4uto874d4yw9r09ukpu6m1htpqpv4g'}
+{'ip': '172.17.0.2', 'user': 'admin', 'http_method': 'GET', 'url': '/favicon.ico', 'parameter': {}, 'timestamp': 1668666504, 'session_id': '2p4uto874d4yw9r09ukpu6m1htpqpv4g'}
+Not Found: /favicon.ico
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/myservice/my_place/', 'parameter': {}, 'timestamp': 1668666601, 'session_id': '2p4uto874d4yw9r09ukpu6m1htpqpv4g'}
+{'ip': '172.17.0.2', 'user': 'admin', 'http_method': 'GET', 'url': '/myservice/my_place/', 'parameter': {}, 'timestamp': 1668666740, 'session_id': '2p4uto874d4yw9r09ukpu6m1htpqpv4g'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/myservice/my_place/', 'parameter': {}, 'timestamp': 1668667280, 'session_id': '2p4uto874d4yw9r09ukpu6m1htpqpv4g'}
+[2022-11-17 15:42:20 +0900] [28371] [INFO] Parent changed, shutting down: <Worker 28371>
+[2022-11-17 15:42:20 +0900] [28371] [INFO] Worker exiting (pid: 28371)
+[2022-11-17 15:42:29 +0900] [4715] [INFO] Starting gunicorn 20.1.0
+[2022-11-17 15:42:29 +0900] [4715] [INFO] Listening at: http://0.0.0.0:8000 (4715)
+[2022-11-17 15:42:29 +0900] [4715] [INFO] Using worker: sync
+[2022-11-17 15:42:29 +0900] [4717] [INFO] Booting worker with pid: 4717
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/accounts/log_out/', 'parameter': {}, 'timestamp': 1668667360, 'session_id': '2p4uto874d4yw9r09ukpu6m1htpqpv4g'}
+{'ip': '172.17.0.2', 'user': 'AnonymousUser', 'http_method': 'GET', 'url': '/', 'parameter': {}, 'timestamp': 1668667361, 'session_id': 'None'}
+{'ip': '127.0.0.1', 'user': 'AnonymousUser', 'http_method': 'GET', 'url': '/accounts/log_in/', 'parameter': {}, 'timestamp': 1668667443, 'session_id': 'None'}
+{'ip': '127.0.0.1', 'user': 'AnonymousUser', 'http_method': 'GET', 'url': '/Downloads/5c08cb3a7e76f9.13618489.jpg', 'parameter': {}, 'timestamp': 1668667443, 'session_id': 'None'}
+Not Found: /Downloads/5c08cb3a7e76f9.13618489.jpg
+{'ip': '172.17.0.2', 'user': 'AnonymousUser', 'http_method': 'POST', 'url': '/accounts/log_in/', 'parameter': {'csrfmiddlewaretoken': ['UvWVoQImk3MXtMUqwgkO1GB7zqPTRuhZwbU3nPQm3t6kc3oqRrqQV4yquWpQSKFO'], 'username': ['admin'], 'password': ['123qwe!@#QWE']}, 'timestamp': 1668667453, 'session_id': 'None'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/options/date_opt/', 'parameter': {}, 'timestamp': 1668667454, 'session_id': 'ocok0871u05iecwzvq910pgw3z9zkroc'}
+{'ip': '127.0.0.1', 'user': 'AnonymousUser', 'http_method': 'GET', 'url': '/', 'parameter': {}, 'timestamp': 1668670021, 'session_id': 'None'}
+{'ip': '127.0.0.1', 'user': 'AnonymousUser', 'http_method': 'GET', 'url': '/accounts/log_in/', 'parameter': {}, 'timestamp': 1668670023, 'session_id': 'None'}
+{'ip': '172.17.0.2', 'user': 'AnonymousUser', 'http_method': 'GET', 'url': '/Downloads/5c08cb3a7e76f9.13618489.jpg', 'parameter': {}, 'timestamp': 1668670023, 'session_id': 'None'}
+Not Found: /Downloads/5c08cb3a7e76f9.13618489.jpg
+{'ip': '127.0.0.1', 'user': 'AnonymousUser', 'http_method': 'POST', 'url': '/accounts/log_in/', 'parameter': {'csrfmiddlewaretoken': ['wVw1CgcD8DXHGBGY6tLtEGlRAKYtCtESzfi9UqHeBl2BDK75z1equVxIDedl17Xl'], 'username': ['admin'], 'password': ['123qwe!@#QWE']}, 'timestamp': 1668670030, 'session_id': 'None'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/options/date_opt/', 'parameter': {}, 'timestamp': 1668670032, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '172.17.0.2', 'user': 'admin', 'http_method': 'GET', 'url': '/options/subway_opt/', 'parameter': {'day': ['today'], 'time': ['10'], 'gu': ['송파구']}, 'timestamp': 1668670035, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+/home/big/study/weather_subway_pjt/options/views.py:26: FutureWarning: Using short name for 'orient' is deprecated. Only the options: ('dict', list, 'series', 'split', 'records', 'index') will be used in a future version. Use one of the above to silence this warning.
+  result = result.to_dict('ranking')
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/options/place_opt/', 'parameter': {'station': ['잠실'], 'pop': ['6037']}, 'timestamp': 1668670040, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '172.17.0.2', 'user': 'admin', 'http_method': 'POST', 'url': '/myservice/my_place_impl/', 'parameter': {'csrfmiddlewaretoken': ['ZDKScPHje7u0TWFiammYhNOdCaPnvPuf9QtnRZiz7LcfPMtMODpKal5QNamjcsC3'], 'station': ['잠실'], 'gu': ['송파구'], 'location': ['아그라잠실롯데에비뉴엘점', '롯데콘서트홀', '롯데면세점월드타워점', '고든램지버거', '라세느롯데호텔월드'], 'location_cate': ['res', 'tour', 'tour', 'res', 'res']}, 'timestamp': 1668670051, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/myservice/my_place/', 'parameter': {}, 'timestamp': 1668670052, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'POST', 'url': '/myservice/del/my_place/', 'parameter': {'csrfmiddlewaretoken': ['qrDr5TXXVSZOmv4btxIDiwTrlaLKiBHzAEmWK3ydOwH3ilSF7OLpb4a4waiGZePn'], 'del-loc': ['348']}, 'timestamp': 1668670136, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '172.17.0.2', 'user': 'admin', 'http_method': 'GET', 'url': '/myservice/my_place/', 'parameter': {}, 'timestamp': 1668670137, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'POST', 'url': '/myservice/del/my_place/', 'parameter': {'csrfmiddlewaretoken': ['yB6L3Me9cADh73ZwcNtelcMalBiTOKXoIOPgIWPp5elw3TN0Q4w0eK3NwBPPvn5c'], 'del-loc': ['347']}, 'timestamp': 1668670141, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+{'ip': '127.0.0.1', 'user': 'admin', 'http_method': 'GET', 'url': '/myservice/my_place/', 'parameter': {}, 'timestamp': 1668670142, 'session_id': 'xtuve9igxesrxeau6773bih9cpwv2d9g'}
+[2022-11-17 16:40:41 +0900] [4715] [CRITICAL] WORKER TIMEOUT (pid:4717)
+[2022-11-17 16:40:41 +0900] [4717] [INFO] Worker exiting (pid: 4717)
+[2022-11-17 16:40:42 +0900] [32765] [INFO] Booting worker with pid: 32765

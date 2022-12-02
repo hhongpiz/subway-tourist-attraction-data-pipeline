@@ -6,7 +6,7 @@ from infra.spark_session import get_spark_session
 
 class WeatherNow:
     URL = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst'
-    SERVICE_KEY = 'lWLaCFJasDo6vpnFordk0ZVBBDk0eu0yL+KUjEF56K+w78w4lsKg7BJANNWeWbL2mzl72Q4LfFyIygL5qCGGkA==s'
+    SERVICE_KEY = 'lWLaCFJasDo6vpnFordk0ZVBBDk0eu0yL+KUjEF56K+w78w4lsKg7BJANNWeWbL2mzl72Q4LfFyIygL5qCGGkA=='
     FILE_DIR = '/final_data/weather_now/'
     @classmethod
     def extract_data(cls):

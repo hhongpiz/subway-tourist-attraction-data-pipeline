@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+.container {
+  color: #11bbad;
+}
+.table1 {
+  background-color: white;
+  color: #11bbad;
+  padding: 1px 5px;
+  border-radius: 30px;
+  text-align: center;
+}
+.end_table {
+  color: #11bbad;
+  padding: 25px 5px;
+  border-radius: 30px;
+}
+.end_end {
+  color: #11bbad;
+}
+.button_bottom {
+  text-align: center;
+}
+.menu {
+  text-align: right;
+  color: #11bbad;
+}
+.btn_group {
+  margin: auto;
+  text-align: center;
+  width: 1500px;
+  height: 500px;
+}
+.title {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000;
+  height: 100px;
+  top: 500px;
+}
+.display-3 {
+  color: #11bbad;
+}
+.title_menu {
+  color: #11bbad;
+}
+.title_button1 {
+  width: 150px;
+  height: 40px;
+  text-align: center;
+}
+.title_button2 {
+  width: 150px;
+  height: 40px;
+  text-align: center;
+}
+.col-lg-3 col-6 p-3 {
+  color: #11bbad;
+}
+.btn-group {
+  scroll-behavior: smooth;
+  margin: auto;
+  text-align: center;
+  width: 250px;
+  height: 40px;
+}
+.title_button1 {
+  scroll-behavior: smooth;
+}
+.menu {
+  text-align: right;
+}
+.menu a {
+  background-color: turquoise;
+  color: White;
+  padding: 1px 5px;
+  border-radius: 30px;
+}
+.button_bottom {
+  scroll-behavior: smooth;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* "btn-group" 는 클릭하는 곳 = scroll container*/

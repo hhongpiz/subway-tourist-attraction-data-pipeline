@@ -1,0 +1,369 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block style_code %}
+  <style> /*table head*/
+    table {
+      width: 548px;
+      text-align: center;
+      border: 1px solid #fff;
+      border-spacing: 1px;
+      font-family: 'Cairo', sans-serif;
+      margin: auto;
+		}
+    
+		caption {
+    	font-weight: bold;
+		}
+
+		table td {
+      padding: 10px;
+      background-color: #eee;
+  	}
+
+		table th {
+      background-color: #11bbad;
+      color: #fff;
+      padding: 10px;
+  	}
+        /*addmore-btn*/
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 37%;
+        transform: translate(-50%, -50%);
+    }
+
+    .contents{
+   -ms-overflow-style: none;
+    }
+    .contents::-webkit-scrollbar{
+      display:none;
+    }
+
+    a span {
+        padding: 15px;
+        transition: .5s;
+        position: relative;
+    }
+    a span:nth-child(1) {
+        color: #fff;
+        background: #11bbad;
+    }
+    a span:nth-child(2) {
+        color: #fff;
+        background: #ff3636;
+    }
+    a span:nth-child(1):before {
+        content: attr(data-attr);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #ff3636;
+        padding: 15px;
+        transition: 0.5S;
+        transform-origin: top;
+        transform: rotateX(90deg) translateY(-50%);
+    }
+    a:hover span:nth-child(1):before {
+        transform: rotateX(0deg) translateY(0%);
+    } 
+    a span:nth-child(2):before {
+        content: attr(data-attr);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #11bbad;
+        padding: 15px;
+        transition: 0.5S;
+        transform-origin: bottom;
+        transform: rotateX(90deg) translateY(50%);
+    }
+    a:hover span:nth-child(2):before {
+        transform: rotateX(0deg) translateY(0%);
+    } 
+    a  span:nth-child(1):after {
+      content: attr(data-attr);
+      padding: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #11bbad;
+      transform-origin: bottom;
+      transform: rotateX(0deg) translateY(0%);
+      transition: 0.5s;
+    }
+    a:hover span:nth-child(1):after {
+      transform: rotateX(90deg) translateY(50%);
+    }
+    a span:nth-child(2):after {
+        content: attr(data-attr);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #ff3636;
+        padding: 15px;
+        transition: 0.5S;
+        transform-origin: top;
+        transform: rotateX(0deg) translateY(0%);
+    }
+    a:hover span:nth-child(2):after {
+        transform: rotateX(90deg) translateY(-50%);
+    }
+    /*table container setting*/
+
+    .table-container{
+      flex-wrap: wrap;
+      width:545px;
+      height:400px;
+      margin: 20px 10px 20px 10px;
+    }
+    
+   /*check list button*/
+
+     .list {
+	 display: inline-block;
+	 flex-direction: column;
+	 margin: 0;
+	 padding: 0;
+	 width: 100%;
+	 max-width: 549px;
+	 background-color: #fff;
+	 border-radius: 6px;
+	 box-shadow: 10px 10px 0 0 rgba(0,0,0,0.2);
+	 list-style: none;
+	 overflow: hidden;
+}
+ .list .list-item {
+	 margin: 0;
+	 padding: 0;
+	 border-bottom: 1px solid #ecf0f1;
+	 position: relative;
+}
+ .list .list-item:last-child {
+	 border: 0;
+}
+ .hidden-box {
+	 position: absolute;
+	 appearance: none;
+	 opacity: 0;
+}
+ .check--label {
+	 font-size: 20px;
+	 margin: 0;
+	 display: flex;
+	 flex-direction: row;
+	 flex-wrap: nowrap;
+	 justify-content: flex-start;
+	 align-items: center;
+}
+ .check--label-box {
+	 display: flex;
+	 align-self: center;
+	 position: relative;
+	 height: 20px;
+	 width: 20px;
+	 margin: 0 20px;
+	 border: 2px solid #3498db;
+	 border-radius: 2px;
+	 cursor: pointer;
+}
+ .check--label-text {
+	 display: flex;
+	 align-self: center;
+	 position: relative;
+	 cursor: pointer;
+	 padding: 20px;
+	 border-left: 1px solid #ecf0f1;
+}
+ .check--label-text:after {
+	 content: '';
+	 display: block;
+	 width: 0%;
+	 height: 2px;
+	 background-color: #000;
+	 position: absolute;
+	 top: 50%;
+	 left: 7.5%;
+	 transform: translateY(-50%);
+	 transition: width 100ms ease-in-out;
+}
+ .hidden-box:checked + .check--label {
+	 background-color: #F9F9F9;
+}
+ .hidden-box:checked + .check--label .check--label-box {
+	 background-color: #3498db;
+}
+ .hidden-box:checked + .check--label .check--label-box:after {
+	 content: '';
+	 display: block;
+	 position: absolute;
+	 top: -1px;
+	 left: 4px;
+	 width: 6px;
+	 height: 12px;
+	 border: solid #000;
+	 border-width: 0 2px 2px 0;
+	 transform: rotate(45deg);
+}
+ .hidden-box:checked + .check--label .check--label-text:after {
+	 width: 85%;
+}
+    /*Delete Place button*/
+    .button {
+  background: #3D4C53;
+  margin-top : 17px;
+  
+  width : 540px;
+  height : 30px;
+  overflow: hidden;
+  text-align : center;
+  transition : .2s;
+  cursor : pointer;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+}
+.btnTwo {
+  position : relative;
+  width : 200px;
+  height : 100px;
+  margin-top: -100px;
+  padding-top: 2px;
+  background : red;
+  left : -250px;
+  transition : .3s;
+}
+.btnText {
+  color : white;
+  transition : .3s;
+}
+.btnText2 {
+  margin-top : 63px;
+  margin-right : -130px;
+  color : #FFF;
+  font-weight: 500;
+}
+.button:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
+  left: -130px;
+}
+.button:hover .btnText{ /*When hovering over .button change .btnText*/
+  margin-left : 65px;
+}
+.button:active { /*Clicked and held*/
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
+}
+  
+  </style>
+  {% endblock %}
+
+  {% block script_code %}
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script> $('input[name=_selected_all_]').on('change', function(){
+  $('input[name=_selected_]').prop('checked', this.checked);
+});
+
+var arr = $('input[name=_selected_]:checked').serializeArray().map(function(item) { return item.value });
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="display-3">My Place</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="center">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      {% for i in st %}
+        <div class="table-container" >
+          <form method="post" action="/myservice/del/my_place/" id="{{i.station_name}}">
+            {% csrf_token %}
+              <table>
+              <thead>
+                <tr>
+                  <th>{{i.gu}} {{ i.station_name }}역</th>
+                </tr>
+              </thead>
+            </table>
+            <div class="contents" style= "height: 300px; overflow: scroll; background-color:rgb(250, 247, 247)">
+              <table>
+                {% for j in mp %}
+                {% if i.station_name == j.station_name %}
+                <ul class="list" style="width:98%"  >
+                  <li class="list-item" >
+                    <input type="checkbox" class="hidden-box " name="del-loc" data-idx="{{j.mp_idx}}" id="{{j.t_name}}_id" value="{{j.mp_idx}}">
+                    <label for="{{j.t_name}}_id" class="check--label">
+                      <span class="check--label-box"></span>
+                      <span class="check--label-text"> {% if j.cate == 'res' %} <img src="/static/img/res_icon.png" > {% else %} <img src="/static/img/tour_icon.png"> {% endif %} &nbsp;&nbsp;{{ j.t_name }}</span>
+
+                    </label>
+                  </li>
+                </ul>
+                {% endif %}
+            {% endfor %}
+              </table>
+          </div>
+             
+            <div class="col-md-12">
+              <div id="holder">
+                <button class="button submit_mp" id="{{i.station_name}}">
+                  <input id="{{내장소}}" type="submit" style="display:none;" onclick='removeElement()'>
+                  <p class="btnText">Delete Place</p>   
+                  <div class="btnTwo">
+                  </div>
+                  <p class="btnText2">X</p>
+                </button>
+                
+              </div>
+            </div>
+          </form>
+
+        </div>
+{% endfor %}
+
+        <div class="table-container">
+          <div style="margin-top:13%; margin-left:12%; position:absolute;">
+            <a href="/options/date_opt/"><span data-attr="ADD" style="font-size:30px; text-transform: uppercase">ADD</span><span data-attr="More" style="font-size: 30px; text-transform: uppercase;"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    elements = []  
+
+    myplace.addEventListener('submit', ev => {
+      ev.preventDefault()
+      document.querySelectorAll(".tour_info").forEach(e => {
+        if(e.checked){
+          elements.remove()
+          myplace.innerHTML += '<input type="hidden" name="location_cate" value="' + e.dataset.cate +'" />'
+        }
+      })
+
+      elements.forEach(e => {
+          document.querySelector('#' + e).checked = true;
+      })
+      
+      ev.target.submit()
+    })
+
+    document.querySelectorAll('.submit_mp').forEach(e => {
+      e.addEventListener('click', ev => {
+        console.dir(document.querySelector('.' + ev.target.id))
+        
+      })
+    })
+
+  </script>
+  {% endblock %}

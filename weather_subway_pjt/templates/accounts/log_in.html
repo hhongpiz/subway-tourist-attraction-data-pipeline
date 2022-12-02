@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="login" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://rsms.me/inter/inter.css");
+      ::selection {
+        background: #2d2f36;
+      }
+      ::-webkit-selection {
+        background: #2d2f36;
+      }
+      ::-moz-selection {
+        background: #2d2f36;
+      }
+      body {
+        background: white;
+        font-family: "Inter var alt", sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      .page {
+        background: #e2e2e5;
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 40px);
+        position: absolute;
+        place-content: center;
+        width: calc(100% - 40px);
+      }
+      .container {
+        display: flex;
+        height: 320px;
+        margin: 0 auto;
+        width: 640px;
+      }
+      .left {
+        background: white;
+        height: calc(100% - 40px);
+        top: 20px;
+        position: relative;
+        width: 50%;
+      }
+      .login {
+        font-size: 50px;
+        font-weight: 900;
+        margin: 50px 40px 40px;
+      }
+      .eula {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 40px;
+      }
+      .right {
+        background: #474a59;
+        box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+        color: #f1f1f2;
+        position: relative;
+        width: 50%;
+      }
+      .login_form {
+        margin: 40px;
+        position: absolute;
+      }
+      label {
+        color: #c2c2c5;
+        display: block;
+        font-size: 14px;
+        height: 16px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      input {
+        background: transparent;
+        border: 2px solid;
+        border-radius: 30px;
+        border-color: turquoise;
+        color: #f2f2f2;
+        font-size: 15px;
+        height: 30px;
+        line-height: 5px;
+        outline: none !important;
+        width: 100%;
+      }
+      input::-moz-focus-inner {
+        border: 0;
+      }
+      #submit {
+        color: #00fa9a;
+        border: 0;
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        transition: color 300ms;
+      }
+      #submit:focus {
+        color: #f2f2f2;
+      }
+      #submit:active {
+        color: #d0d0d2;
+      }
+      #signup {
+        color: white;
+        font-size: 15px;
+        border: 0;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        transition: color 300ms;
+      }
+      #signup:focus {
+        color: #f2f2f2;
+      }
+      #signup:active {
+        color: #d0d0d2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      class="page"
+      style="
+        background-image: url(../../../../Downloads/5c08cb3a7e76f9.13618489.jpg);
+        background-position: top left;
+        background-size: 100%;
+        background-repeat: repeat;
+      "
+    >
+      <div class="container">
+        <div class="left">
+          <div class="login">Login</div>
+          <div class="eula" style="margin-top: -10%">
+            <p>Welcome to the Weathere!</p>
+            <p>Our service is a machine learning-based floating population prediction system based on weather information and subway floating population.</p>
+
+          </div>
+        </div>
+        <div class="right">
+          <div class="login_form">
+            <form method="POST" action="/accounts/log_in/">
+              {% csrf_token %}
+              <label for="username">ID</label>
+              <input type="username" id="username" name="username" />
+
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" />
+
+              <input type="submit" id="submit" value="Log in" />
+            </form>
+            <a href="/accounts/sign_up/"
+              ><input type="submit" id="signup" value="Sign up"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

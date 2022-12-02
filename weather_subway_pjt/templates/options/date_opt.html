@@ -1,0 +1,607 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block style_code %}
+    <style>
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #ebf5fc;
+      }
+      #D {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 1%;
+        width: 240px;
+        height: 500px;
+
+        background: #ebf5fc;
+        box-shadow: -2px -2px 5px white, 5px 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      #T {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 5%;
+        width: 300px;
+        height: 500px;
+
+        background: #ebf5fc;
+        box-shadow: -2px -2px 5px white, 5px 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      #G {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 1%;
+        width: 500px;
+        background: #ebf5fc;
+        box-shadow: -2px -2px 5px white, 5px 5px 7px rgba(0, 0, 0, 0.1);
+        height: 500px;
+        font-size: 15px;
+      }
+      ul:not(.navbar-nav) li:not(.navbar-nav) {
+        position: relative;
+        list-style: none;
+        float: left;
+        text-align: center;
+        margin: 10px;
+      }
+      ul li label {
+        position: relative;
+        cursor: pointer;
+      }
+      ul li label input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+      }
+      ul li label :checked ~ .icon-box-D {
+        box-shadow: inset -2px -2px 5px white,
+          inset 4px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      ul li label :checked ~ .icon-box-D {
+        transform: scale(0.95);
+      }
+      ul li label :checked ~ .icon-box {
+        box-shadow: inset -2px -2px 5px white,
+          inset 4px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      ul li label :checked ~ .icon-box {
+        transform: scale(0.95);
+      }
+      ul li label .icon-box {
+        width: 60px;
+        height: 60px;
+        background: #ebf5fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: -2px -2px 5px white, 4px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      ul li label .icon-box-D {
+        width: 130px;
+        height: 130px;
+        background: #ebf5fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: -2px -2px 5px white, 4px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      ul li label .icon-box .fa {
+        font-size: 30px;
+        color: #6a9bd8;
+      }
+      i {
+        
+        font-size: 16px;
+        font-weight: 500;
+      }
+      p {
+        font-size: 30px;
+        font-weight: 700;
+      }
+    </style>
+{% endblock %}
+
+{% block script_code %}
+    <script>
+      $("button").on("click", function () {
+        $("button").removeClass("selected");
+        $(this).addClass("selected");
+      });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <form method="get" action="/options/subway_opt">
+      <div class="py-5" style="">
+        <div class="col=md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="display-4">놀러가고 싶은 지역은?</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <p>날짜 선택</p>
+              <ul id="D">
+                <li>
+                  <label for="Today">
+                    <input
+                      type="radio"
+                      id="Today"
+                      name="day"
+                      value="today"
+                      checked=""
+                    />
+                    <div class="icon-box-D">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">Today</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="Day+1">
+                    <input type="radio" id="Day+1" name="day" value="day1" />
+                    <div class="icon-box-D">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">Day+1</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="Day+2">
+                    <input type="radio" id="Day+2" name="day" value="day2" />
+                    <div class="icon-box-D">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">Day+2</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p>시간 선택</p>
+              <ul id="T">
+                <li>
+                  <label for="10시">
+                    <input
+                      type="radio"
+                      id="10시"
+                      name="time"
+                      checked=""
+                      value="10"
+                    />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">10시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="11시">
+                    <input type="radio" id="11시" name="time" value="11" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">11시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="12시">
+                    <input type="radio" id="12시" name="time" value="12" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">12시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="13시">
+                    <input type="radio" id="13시" name="time" value="13" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">13시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="14시">
+                    <input type="radio" id="14시" name="time" value="14" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">14시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="15시">
+                    <input type="radio" id="15시" name="time" value="15" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">15시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="16시">
+                    <input type="radio" id="16시" name="time" value="16" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">16시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="17시">
+                    <input type="radio" id="17시" name="time" value="17" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">17시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="18시">
+                    <input type="radio" id="18시" name="time" value="18" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">18시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="19시">
+                    <input type="radio" id="19시" name="time" value="19" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">19시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="20시">
+                    <input type="radio" id="20시" name="time" value="20" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">20시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="21시">
+                    <input type="radio" id="21시" name="time" value="21" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">21시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label for="22시">
+                    <input type="radio" id="22시" name="time" value="22" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">22시</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-5">
+              <p>자치구 선택</p>
+              <ul id="G">
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="강남구" checked="" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">강남구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="강동구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">강동구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="강북구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">강북구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="강서구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">강서구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="관악구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">관악구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="광진구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">광진구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="구로구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">구로구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="금천구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">금천구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="노원구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">노원구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="도봉구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">도봉구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="동대문구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">동대문구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="동작구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">동작구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="마포구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">마포구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="서대문구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">서대문구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="서초구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">서초구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="성동구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">성동구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="성북구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">성북구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="송파구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">송파구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="양천구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">양천구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="영등포구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">영등포구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="용산구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">용산구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="은평구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">은평구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="중구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">중구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="종로구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">종로구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="gu" value="중랑구" />
+                    <div class="icon-box">
+                      <i aria-hidden="true"
+                        ><span style="font-style: normal">중랑구</span></i
+                      >
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8" style=""></div>
+            <div class="col-md-4" style="">
+              <input
+                href="#"
+                style="
+                  margin-top: 5px;
+                  margin-left: 38%;
+                  width: 200px;
+                  font-size: 20px;
+                  font-weight: 400;
+                  background: #11bbad;
+                "
+                type="submit"
+                value="선택 완료"
+                class="btn btn-secondary"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+{% endblock %}

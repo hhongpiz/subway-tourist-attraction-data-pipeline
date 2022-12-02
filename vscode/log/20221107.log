@@ -1,0 +1,1 @@
+{"is_success": "Fail", "type": "weather_now", "err_msg": "'DataFrame' object has no attribute 'to_pandas'"}

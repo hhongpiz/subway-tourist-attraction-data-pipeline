@@ -1,0 +1,1181 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block style_code %}
+<style>
+  * {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  hr[role="tournament2"] {
+    border: 0px solid;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 140, 186, 0.75),
+      rgba(0, 0, 0, 0)
+    );
+    margin: 32px 0px;
+    display: block;
+  }
+  .scroll_head,.scroll_body { display: block; }
+
+  .scroll_body {
+    height:550px;
+
+    overflow-y: auto;
+  }
+    p {
+      margin: 0;
+    }
+/*관광지 버튼 CSS*/
+.tour {
+
+      width: 112px;
+      height: 23px;
+      cursor: pointer;
+      position: absolute;
+
+      font-family: "Roboto";
+      text-transform: uppercase;
+      color: orange;
+      letter-spacing: 0.5px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      outline: none;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+.more-tour {
+    border-right: 2.5px solid orange;
+    border-bottom: 2.5px solid orange;
+    border-color: orange;
+}
+
+.more-tour p {
+  font-size: 14px;
+}
+
+#wrapper.smooth section.smoothy.show {
+    visibility: visible;
+}
+
+.more-tour:before {
+    left: 0;
+    bottom: 0;
+    height: -webkit-calc(100% - 17px);
+    height: calc(100% - 17px);
+    width: 2px;
+}
+
+.more-tour:after, .more-tour:before {
+    content: " ";
+    display: block;
+    background: orange;
+    position: absolute;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+.more-tour:after {
+    top: 0;
+    right: 0;
+    width: -webkit-calc(100% - 17px);
+    width: calc(100% - 17px);
+    height: 2px;
+}
+
+.more-tour:after, .more-tour:before {
+    content: " ";
+    display: block;
+    background: orange;
+    position: absolute;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+::selection {
+    background: orange;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
+.more-tour:before {
+    left: 0;
+    bottom: 0;
+    height: -webkit-calc(100% - 17px);
+    height: calc(100% - 17px);
+    width: 2px;
+}
+
+.more-tour:after, .more-tour:before {
+    content: " ";
+    display: block;
+    background: orange;
+    position: absolute;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+.more-tour .tour-fl, .more-tour .tour-sfl {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    background: orange;
+    top: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+.more-tour .tour-fl, .more-tour .tour-sfl {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    background: orange;
+    top: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+.more-tour .tour-sfl {
+    z-index: 1;
+    background: orange;
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.more-tour .tour-cross {
+    position: absolute;
+    z-index: 15;
+    width: 18px;
+    height: 18px;
+    top: -webkit-calc(50% - 8px);
+    top: calc(50% - 8px);
+    left: -webkit-calc(50% - 8px);
+    left: calc(50% - 8px);
+}
+
+#wrapper.smooth section.smoothy {
+    visibility: hidden;
+}
+
+.more-tour .tour-cross:before {
+    width: 100%;
+    height: 2px;
+    top: 8px;
+    left: 0px;
+    -webkit-transform: translateX(50px) scaleX(0);
+    -ms-transform: translateX(50px) scaleX(0);
+    transform: translateX(50px) scaleX(0);
+}
+
+.more-tour .tour-cross:before, .more-tour .tour-cross:after {
+    content: " ";
+    background: #fff;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.more-tour .tour-cross:after {
+    width: 2px;
+    height: 100%;
+    left: 8px;
+    top: 0;
+    -webkit-transform: translateY(20px) scaleY(0);
+    -ms-transform: translateY(20px) scaleY(0);
+    transform: translateY(20px) scaleY(0);
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+}
+
+.more-tour .tour-cross:before, .more-tour .tour-cross:after {
+    content: " ";
+    background: #fff;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.more-tour i {
+    position: absolute;
+    display: block;
+    top: 1px;
+    left: 1px;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+.more-tour i:before {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.more-tour i:after, .more-tour i:before {
+    content: " ";
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: orange;
+    position: absolute;
+    margin: -10px -1px;
+    left: 50%;
+    top: 50%;
+    transition: 0.3s;
+}
+
+.more-tour:hover i:after {
+    content: " ";
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: orange;
+    position: absolute;
+    margin: 0px -1px;
+    left: 50%;
+    top: 50%;
+}
+
+.more-tour:hover i:before {
+    content: " ";
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: orange;
+    position: absolute;
+    margin: -10px 0px -10px 8px;
+    left: 50%;
+    top: 50%;
+}
+
+.more-tour p {
+    -webkit-transition: .5s;
+    transition: .5s;
+    position: relative;
+    z-index: 1;
+}
+
+.more-tour:hover:before, .more-tour:before {height: 100%;}
+
+.more-tour:before {
+    left: 0;
+    bottom: 0;
+    height: -webkit-calc(100% - 17px);
+    height: calc(100% - 17px);
+    width: 2px;
+}
+
+.more-tour:hover .tour-fl, .more-tour .tour-fl {
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.more-tour:hover .tour-fl, .more-tour:hover .tour-sfl, .more-tour .tour-fl, .more-tour .tour-sfl {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    width: 100%;
+}
+
+.more-tour .tour-fl, .more-tour .tour-sfl {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    background: orange;
+    top: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+.more-tour:hover .tour-sfl, .more-tour. .tour-sfl {
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.more-tour:hover .tour-fl, .more-tour:hover .tour-sfl, .more-tour.hvd .tour-fl, .more-tour.hvd .tour-sfl {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    width: 100%;
+}
+
+.more-tour .tour-sfl {
+    z-index: 1;
+    background: orange;
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.more-tour .tour-cross {
+    position: absolute;
+    z-index: 15;
+    width: 18px;
+    height: 18px;
+    top: -webkit-calc(50% - 8px);
+    top: calc(50% - 8px);
+    left: -webkit-calc(50% - 8px);
+    left: calc(50% - 8px);
+}
+
+.more-tour:hover .tour-cross:before, .more-tour .tour-cross:before {
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+}
+
+.more-tour:hover .tour-cross:after, .more-tour:hover .tour-cross:before, .more-tour .tour-cross:after, .more-tour .tour-cross:before {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    opacity: 1;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+.more-tour .tour-cross:after {
+    width: 2px;
+    height: 100%;
+    left: 8px;
+    top: 0;
+    -webkit-transform: translateY(20px) scaleY(0);
+    -ms-transform: translateY(20px) scaleY(0);
+    transform: translateY(20px) scaleY(0);
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+}
+
+.more-tour .tour-cross:before, .more-tour .tour-cross:after {
+    content: " ";
+    background: #fff;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.more-tour:hover .tour-cross:after, .more-tour:hover .tour-cross:before, .more-tour.hvd .tour-cross:after, .more-tour.hvd .tour-cross:before {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    opacity: 1;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+.more-tour:hover .tour-cross:after, .more-tour.hvd .tour-cross:after {
+    -webkit-transition-duration: .6s;
+    transition-duration: .6s;
+}
+/*맛집 버튼 CSS*/
+
+    .res {
+      width: 112px;
+      height: 23px;
+      cursor: pointer;
+      position: absolute;
+      font-family: "Roboto";
+      text-transform: uppercase;
+      color: #11bbad;
+      letter-spacing: 0.5px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      outline: none;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+.more-res {
+    border-right: 2.5px solid #11bbad;
+    border-bottom: 2.5px solid #11bbad;
+    border-color: #11bbad;
+}
+
+.more-res p {
+  font-size: 14px;
+}
+
+#wrapper.smooth section.smoothy.show {
+    visibility: visible;
+}
+
+.more-res:before {
+    left: 0;
+    bottom: 0;
+    height: -webkit-calc(100% - 17px);
+    height: calc(100% - 17px);
+    width: 2px;
+}
+
+.more-res:after, .more-res:before {
+    content: " ";
+    display: block;
+    background: #11bbad;
+    position: absolute;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+.more-res:after {
+    top: 0;
+    right: 0;
+    width: -webkit-calc(100% - 17px);
+    width: calc(100% - 17px);
+    height: 2px;
+}
+
+.more-res:after, .more-res:before {
+    content: " ";
+    display: block;
+    background: #11bbad;
+    position: absolute;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+::selection {
+    background: #11bbad;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
+.more-res:before {
+    left: 0;
+    bottom: 0;
+    height: -webkit-calc(100% - 17px);
+    height: calc(100% - 17px);
+    width: 2px;
+}
+
+.more-res:after, .more-res:before {
+    content: " ";
+    display: block;
+    background: #11bbad;
+    position: absolute;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+.more-res .res-fl, .more-res .res-sfl {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    background: #11bbad;
+    top: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+.more-res .res-fl, .more-res .res-sfl {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    background: #11bbad;
+    top: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+.more-res .res-sfl {
+    z-index: 1;
+    background: #11bbad;
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.more-res .res-cross {
+    position: absolute;
+    z-index: 15;
+    width: 18px;
+    height: 18px;
+    top: -webkit-calc(50% - 8px);
+    top: calc(50% - 8px);
+    left: -webkit-calc(50% - 8px);
+    left: calc(50% - 8px);
+}
+
+#wrapper.smooth section.smoothy {
+    visibility: hidden;
+}
+
+.more-res .res-cross:before {
+    width: 100%;
+    height: 2px;
+    top: 8px;
+    left: 0px;
+    -webkit-transform: translateX(50px) scaleX(0);
+    -ms-transform: translateX(50px) scaleX(0);
+    transform: translateX(50px) scaleX(0);
+}
+
+.more-res .res-cross:before, .more-res .res-cross:after {
+    content: " ";
+    background: #fff;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.more-res .res-cross:after {
+    width: 2px;
+    height: 100%;
+    left: 8px;
+    top: 0;
+    -webkit-transform: translateY(20px) scaleY(0);
+    -ms-transform: translateY(20px) scaleY(0);
+    transform: translateY(20px) scaleY(0);
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+}
+
+.more-res .res-cross:before, .more-res .res-cross:after {
+    content: " ";
+    background: #fff;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.more-res i {
+    position: absolute;
+    display: block;
+    top: 1px;
+    left: 1px;
+    -webkit-transition: .5s;
+    transition: .5s;
+    z-index: 10;
+}
+
+.more-res i:before {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.more-res i:after, .more-res i:before {
+    content: " ";
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: #11bbad;
+    position: absolute;
+    margin: -10px -1px;
+    left: 50%;
+    top: 50%;
+    transition: 0.3s;
+}
+
+.more-res:hover i:after {
+    content: " ";
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: #11bbad;
+    position: absolute;
+    margin: 0px -1px;
+    left: 50%;
+    top: 50%;
+}
+
+.more-res:hover i:before {
+    content: " ";
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: #11bbad;
+    position: absolute;
+    margin: -10px 0px -10px 8px;
+    left: 50%;
+    top: 50%;
+}
+
+.more-res p {
+    -webkit-transition: .5s;
+    transition: .5s;
+    position: relative;
+    z-index: 1;
+}
+
+.more-res:hover:before, .more-res:before {height: 100%;}
+
+.more-res:before {
+    left: 0;
+    bottom: 0;
+    height: -webkit-calc(100% - 17px);
+    height: calc(100% - 17px);
+    width: 2px;
+}
+
+.more-res:hover .res-fl, .more-res .res-fl {
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.more-res:hover .res-fl, .more-res:hover .res-sfl, .more-res .res-fl, .more-res .res-sfl {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    width: 100%;
+}
+
+.more-res .res-fl, .more-res .res-sfl {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    background: #11bbad;
+    top: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+
+.more-res:hover .res-sfl, .more-res. .res-sfl {
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.more-res:hover .res-fl, .more-res:hover .res-sfl, .more-res.hvd .res-fl, .more-res.hvd .res-sfl {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    width: 100%;
+}
+
+.more-res .res-sfl {
+    z-index: 1;
+    background: #11bbad;
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.more-res .res-cross {
+    position: absolute;
+    z-index: 15;
+    width: 18px;
+    height: 18px;
+    top: -webkit-calc(50% - 8px);
+    top: calc(50% - 8px);
+    left: -webkit-calc(50% - 8px);
+    left: calc(50% - 8px);
+}
+
+.more-res:hover .res-cross:before, .more-res .res-cross:before {
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+}
+
+.more-res:hover .res-cross:after, .more-res:hover .res-cross:before, .more-res .cross:after, .more-res .res-cross:before {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    opacity: 1;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+.more-res .res-cross:after {
+    width: 2px;
+    height: 100%;
+    left: 8px;
+    top: 0;
+    -webkit-transform: translateY(20px) scaleY(0);
+    -ms-transform: translateY(20px) scaleY(0);
+    transform: translateY(20px) scaleY(0);
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+}
+
+.more-res .res-cross:before, .more-res .res-cross:after {
+    content: " ";
+    background: #fff;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.more-res:hover .res-cross:after, .more-res:hover .res-cross:before, .more-res.hvd .res-cross:after, .more-res.hvd .res-cross:before {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    opacity: 1;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+.more-res:hover .res-cross:after, .more-res.hvd .res-cross:after {
+    -webkit-transition-duration: .6s;
+    transition-duration: .6s;
+}
+/*관광지 버튼-checked CSS*/
+  input[type=checkbox] + .tour {display:none;}
+    input[type=checkbox]:checked + .tour {
+    position:absolute;
+    background:url("/static/img/noname.png") center no-repeat;
+    background-size:cover;
+    z-index:30;
+    width:110px;
+      height:23px;
+      display: inline-block;
+    }
+    input[type=checkbox] {
+      position:absolute;
+      opacity: 0;
+    }
+
+/*맛집 버튼-checked CSS*/
+    input[type=checkbox] + .res {display:none;}
+    input[type=checkbox]:checked + .res {
+    position:absolute;
+
+    background:url("/static/img/noname2.png") center no-repeat;
+
+    background-size:cover;
+    z-index:30;
+    width:110px;
+    height:23px;
+    display: inline-block;
+    }
+    input[type=checkbox] {
+      position:absolute;
+      opacity: 0;
+    }
+/*my_place 제출 버튼 CSS*/
+        button {
+	 position: absolute;
+	 display: inline-block;
+	 cursor: pointer;
+	 outline: none;
+	 border: 0;
+	 vertical-align: middle;
+	 text-decoration: none;
+	 background: transparent;
+	 padding: 0;
+	 font-size: inherit;
+	 font-family: inherit;
+}
+ button.learn-more {
+	 width: 12rem;
+	 height: auto;
+}
+ button.learn-more .circle {
+	 position: relative;
+	 display: block;
+	 margin: 0;
+	 width: 3rem;
+	 height: 3rem;
+	 background: black;
+	 border-radius: 1.625rem;
+}
+ button.learn-more .circle .icon {
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 margin: auto;
+	 background: white;
+}
+ button.learn-more .circle .icon.arrow {
+	 left: 0.625rem;
+	 width: 1.125rem;
+	 height: 0.125rem;
+	 background: none;
+}
+ button.learn-more .circle .icon.arrow::before {
+	 position: absolute;
+	 content: '';
+	 top: -0.25rem;
+	 right: 0.0625rem;
+	 width: 0.625rem;
+	 height: 0.625rem;
+	 border-top: 0.125rem solid #fff;
+	 border-right: 0.125rem solid #fff;
+	 transform: rotate(45deg);
+}
+ button.learn-more .button-text {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 padding: 0.75rem 0;
+	 margin: 0 0 0 1.85rem;
+	 color: black;
+	 font-weight: 700;
+	 line-height: 1.6;
+	 text-align: center;
+	 text-transform: uppercase;
+}
+ button:hover .circle {
+	 width: 100%;
+   transition-duration: .3s;
+   transition-delay: .2s;
+
+}
+ button:hover .circle .icon.arrow {
+	 background: white;
+	 transform: translate(1rem, 0);
+   transition-duration: .3s;
+      transition-delay: .2s;
+
+}
+ button:hover .button-text {
+	 color: white;
+   transition-duration: .3s;
+      transition-delay: .2s;
+
+}
+	 #container {
+		 grid-area: main;
+		 align-self: center;
+		 justify-self: center;
+	}
+
+
+  </style>
+  <style type="text/css">
+    .map-label {
+  width: auto;
+  height: 28px;
+  border: 1.5px solid black;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+    </style>
+
+{% endblock %}
+
+{% block script_code %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/handlebars/4.7.7/handlebars.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+
+
+<!--  <script defer src="./index.js"></script>-->
+     <script>
+    window.initMap = function() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: {
+          lat: 37.5400456,
+          lng: 126.9921017
+        },
+        zoom: 10,
+      });
+      {% block maps %}
+      var malls = [
+        {% for i in tourist %}
+            {label: { text:"　{{i.t_name}}　",
+                    color:"black",
+                    fontSize:'13px',
+                    className: "map-label",
+                },
+          lat: {{i.lat}},
+          lng: {{i.lon}}},
+        {% endfor %}   ];
+      {% endblock %}
+      const bounds = new google.maps.LatLngBounds();
+      const infowindow = new google.maps.InfoWindow();
+      malls.forEach(({
+        label,
+        name,
+        lat,
+        lng
+      }) => {
+        const marker = new google.maps.Marker({
+          position: {
+            lat,
+            lng
+          },
+          label,
+          map: map,
+          icon:{
+              url:'/static/img/marker.png',
+              labelOrigin: new google.maps.Point(7, -10),
+          }
+        });
+        bounds.extend(marker.position);
+        
+      });
+      map.fitBounds(bounds);
+    };
+  </script>
+<script defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzu2iFOodz7NEWlhrBvz8lv-0DZ81cEpI&amp;&callback=initMap"></script>
+{% endblock %}
+
+{% block content%}
+    <form method="post" action="/myservice/my_place_impl/" id="myplace">
+      {% csrf_token %}
+
+      <input type="hidden" name="station" value="{{ station_pop.station }}"/>
+      <input type="hidden" name="gu" value="{{ gu }}"/>
+
+<div class="container" style="margin-top: 70px">
+
+  <div class="row">
+    <div class="col-md-8" style="">
+      <div
+        id="map"
+        style="height: 600px; width: 750px; margin-left: 0px; margin-top: 0px;"></div>
+    </div>
+    <div class="col-md-4" style="">
+      <div class="table-responsive" style="width:450px">
+          <table class="table">
+          <thead class="scroll_head">
+            <div>
+              <p style="font-weight: bold; text-align:center; margin-bottom:20px; font-size: 19px;">관광지 및 맛집　　　　</p></div>
+          </thead>
+          <tbody class="scroll_body" style="height:550px;">
+          {% for i in tourist %}
+            <tr align="center">
+                <td>{{ i.t_name }}</td>
+
+                <td style="position:relative;width:200px;" class="wrap_tour_info">
+
+                <a class="{{ i.cate }} more-{{ i.cate }}" onclick="$('#tour_info_{{forloop.counter0}}' ).trigger('click');">
+                <span class="{{ i.cate }}-fl"></span><span class="{{ i.cate }}-sfl"></span>
+                <span class="{{ i.cate }}-cross"></span>
+                <p>add</p>
+                </a><i><img src="/static/img/cancel.png" style="padding:0%"></i>
+                <input type="checkbox" class="tour_info" id='tour_info_{{forloop.counter0}}' name="location" value="{{ i.t_name }}" data-cate="{{ i.cate }}"><label class="{{ i.cate }}" for="tour_info_'+i"></label>
+                </td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+              <div id="container">
+                <button type="submit" class="learn-more" value="submit">
+                  <span class="circle" aria-hidden="true">
+                    <span class="icon arrow"></span>
+                  </span>
+                  <span class="button-text">go! My place</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  <h3 class="" style="margin-top: 15px">
+    <span class="place_subway" style="color:hwb(39 16% 0%); font-weight: bold; margin-left: 230px;">{{ station_pop.station }}역</span>의 예상 유동인구는 <span class="plae_pop" style="color:hwb(28 9% 0%) ;font-weight: bold;">{{ station_pop.pop }}명</span> 입니다.
+  </h3>
+</div>
+
+<hr role="tournament2"/>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3 class="" style="margin-top:15px; ">{{ year }}년 <span class="now_date" style="color:#11bbad;font-weight: bold;">{{ month }}월 {{ day }}일 {{ time }}시</span> 서울시 <span class="gu" style="color:#11bbad;font-weight: bold; ">{{gu}}</span>의 날씨 및 미세먼지 </h3>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-6"><img class="img-fluid d-block float-right" src="{% static 'img/tourist.png' %}" width="60">
+                </div>
+                <div class="col-md-6"><img class="img-fluid d-block" src="{% static 'img/tourists.png' %}" width="60">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="table-responsive">
+                <table class="table table-striped table-borderless" style="text-align:center;">
+                  <thead>
+                    <tr class="Weather">
+                      <th colspan="2">날씨 확인하기</th>
+                    </tr>
+                  </thead>
+                      <tbody>
+                        <tr>
+                          <td><i class="fa fa-thermometer-quarter">&nbsp; 기온(℃)</i></td>
+                          <td>{{ weather.tmp }}</td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-sun-o"></i>&nbsp; 하늘상태</td>
+                          {% if weather.sky == 1 %}
+                            <td>맑음</td>
+                          {% elif weather.sky == 3 %}
+                            <td>구름많음</td>
+                          {% else %}
+                            <td>흐림</td>
+                          {% endif %}
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-tint"></i>&nbsp; 습도(%)</td>
+                          <td>{{ weather.humn }}</td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-fa fa-paper-plane "></i>&nbsp; 풍향(16방위)</td>
+                          <td>{{ weather.windd }}</td>
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-life-ring"></i>&nbsp; 풍속(m/s)</td>
+                          <td>{{ weather.winds }}</td>
+                        <tr>
+                          <td><i class="fa fa-umbrella"></i>&nbsp; 강수량 (mm)</td>
+                          {% if weather.rain == 0 %}
+                            <td>강수없음</td>
+                          {% else %}
+                            <td>{{ weather.rain }}</td>
+                          {% endif %}
+                        </tr>
+                        <tr>
+                          <td><i class="fa fa-snowflake-o">&nbsp; 적설량 (mm)</i></td>
+                          {% if weather.snow == 0 %}
+                            <td>적설없음</td>
+                          {% else %}
+                            <td>{{ weather.snow }}</td>
+                          {% endif %}
+                        </tr>
+                      </tbody>
+                </table>
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-5" style="margin-top:50px;">
+                <img class="img-fluid d-block" src={{ weather.pm10 }}>
+              <div class="row">
+                <div class="col-md-12" style="margin-top:10px; text-align:center;">
+                  <h5 contenteditable="true"><b style="font-weight: bold;">미세먼지</b></h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5" style="margin-top:50px;">
+              <div class="row">
+                <div class="col-md-12">
+                    <img class="img-fluid d-block" src={{ weather.pm25 }}>
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:10px; text-align:center;">
+                      <h5 contenteditable="true"><b style="font-weight: bold;">초미세먼지</b></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr role="tournament2">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    elements = []  
+
+    myplace.addEventListener('submit', ev => {
+      ev.preventDefault()
+      document.querySelectorAll(".tour_info").forEach(e => {
+        if(e.checked){
+          elements.push(e.id)
+          myplace.innerHTML += '<input type="hidden" name="location_cate" value="' + e.dataset.cate +'" />'
+        }
+      })
+
+      elements.forEach(e => {
+          document.querySelector('#' + e).checked = true;
+      })
+      
+      ev.target.submit()
+    })
+
+
+
+  </script>
+
+{% endblock %}
